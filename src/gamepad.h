@@ -34,7 +34,8 @@ private:
     int test;
     XINPUT_STATE state;
     XINPUT_VIBRATION vibration;
-    std::unordered_map<WORD, bool> keyStates;
+    std::unordered_map<WORD, bool> previousFrameKeys;
+    std::unordered_map<WORD, bool> isPressedThisFrame;
     float deadzoneX;
     float deadzoneY;
 
