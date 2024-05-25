@@ -132,11 +132,23 @@ bool Gamepad::Refresh()
 }
 
 bool Gamepad::PressedThisFrame(WORD key) {
-    return keyStates[key];
+    return !previousFrameKeys[key] && gamepad.IsPressed(key);
 }
 
 void Gamepad::setKeyState(WORD key) {
-    keyStates[key] = gamepad.IsPressed(key);  // You can set any index (key) with this syntax
+
+    bool isPressed = gamepad.IsPressed(key);
+
+    auto it = previousFrameKeys.find(key);
+
+    if (it != previousFrameKeys.end()) {
+        // Key exists
+        bool value = it->second;
+        isPressedThisFrame[key] = !value && isPressed;
+        // Do something with the value
+    }
+
+    previousFrameKeys[key] = gamepad.IsPressed(key);  // You can set any index (key) with this syntax
 }
 
 bool Gamepad::IsPressed(WORD button) const

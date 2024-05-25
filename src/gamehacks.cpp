@@ -223,8 +223,10 @@ void GameHacks::processGamepadInput()
 			else
 			{
 				// bullshit hacks to make it be a hotkey combo instead the weird waiting you have to do. you know, like how the keyboard shortcuts work
-				isGamepadShortcutMode = gamepad.IsPressed(XINPUT_GAMEPAD_LEFT_THUMB);
-				enable_hold_input = isGamepadShortcutMode;
+				if (gamepad.PressedThisFrame(XINPUT_GAMEPAD_RIGHT_THUMB)){
+					toggleSpeedhack();
+				}
+				return;
 			}
 
 			if(!isGamepadShortcutMode) return;
