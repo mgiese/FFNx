@@ -213,12 +213,18 @@ void GameHacks::processGamepadInput()
 				return;
 			}
 
-			if (gamepad.IsPressed(XINPUT_GAMEPAD_LEFT_THUMB)) // L2
+			if (hacks_controller_quick_toggle && gamepad.IsPressed(XINPUT_GAMEPAD_LEFT_THUMB)) // L2
 			{
 				isGamepadShortcutMode = !isGamepadShortcutMode;
 				if(isGamepadShortcutMode) show_popup_msg(TEXTCOLOR_LIGHT_BLUE, "Waiting for shortcut input..");
 				else clear_popup_msg();
 				holdInput();
+			}
+			else
+			{
+				// bullshit hacks to make it be a hotkey combo instead the weird waiting you have to do. you know, like how the keyboard shortcuts work
+				isGamepadShortcutMode = gamepad.IsPressed(XINPUT_GAMEPAD_LEFT_THUMB);
+				enable_hold_input = isGamepadShortcutMode;
 			}
 
 			if(!isGamepadShortcutMode) return;
@@ -347,7 +353,7 @@ bool GameHacks::isAutoAttack()
 void GameHacks::holdInput()
 {
 	if(!enable_hold_input) return;
-	hold_input_for_frames = 30; // ~1 sec
+	hold_input_for_frames = waitinput_frames;
 	enable_hold_input = false;
 }
 

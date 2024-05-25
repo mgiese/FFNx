@@ -132,6 +132,8 @@ extern long devtools_hotkey;
 extern double speedhack_step;
 extern double speedhack_max;
 extern double speedhack_min;
+extern double waitinput_frames;
+extern bool hacks_controller_quick_toggle;
 extern bool enable_animated_textures;
 extern std::vector<std::string> disable_animated_textures_on_field;
 extern long ff7_fps_limiter;

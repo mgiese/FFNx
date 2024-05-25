@@ -20,7 +20,7 @@
 /****************************************************************************/
 
 #include "gamepad.h"
-
+#include <unordered_map>
 Gamepad gamepad;
 
 int Gamepad::GetPort() const
@@ -114,13 +114,33 @@ bool Gamepad::Refresh()
         leftTrigger = (float)state.Gamepad.bLeftTrigger / 255;
         rightTrigger = (float)state.Gamepad.bRightTrigger / 255;
 
+        setKeyState(XINPUT_GAMEPAD_X);
+        setKeyState(XINPUT_GAMEPAD_A);
+        setKeyState(XINPUT_GAMEPAD_B);
+        setKeyState(XINPUT_GAMEPAD_Y);
+        setKeyState(XINPUT_GAMEPAD_LEFT_SHOULDER);
+        setKeyState(XINPUT_GAMEPAD_RIGHT_SHOULDER);
+
+        setKeyState(XINPUT_GAMEPAD_BACK);
+        setKeyState(XINPUT_GAMEPAD_START);
+        setKeyState(XINPUT_GAMEPAD_LEFT_THUMB);
+        setKeyState(XINPUT_GAMEPAD_RIGHT_THUMB);
+
         return true;
     }
     return false;
 }
 
+bool Gamepad::PressedThisFrame(WORD key) {
+    return keyStates[key];
+}
+
+void Gamepad::setKeyState(WORD key) {
+    keyStates[key] = gamepad.IsPressed(key);  // You can set any index (key) with this syntax
+}
+
 bool Gamepad::IsPressed(WORD button) const
-{
+{    
     return (state.Gamepad.wButtons & button) != 0;
 }
 

@@ -24,15 +24,17 @@
 #include <cmath>
 #include <Windows.h>
 #include <Xinput.h>
+#include <unordered_map>
 
 // Kudos to https://katyscode.wordpress.com/2013/08/30/xinput-tutorial-part-1-adding-gamepad-support-to-your-windows-game/
 class Gamepad
 {
 private:
     int cId;
+    int test;
     XINPUT_STATE state;
     XINPUT_VIBRATION vibration;
-
+    std::unordered_map<WORD, bool> keyStates;
     float deadzoneX;
     float deadzoneY;
 
@@ -53,9 +55,11 @@ public:
     bool CheckConnection();
     // Get state from remote device
     bool Refresh();
+    void setKeyState(WORD key);
     bool Vibrate(WORD wLeftMotorSpeed, WORD wRightMotorSpeed);
     bool IsPressed(WORD) const;
     bool IsIdle();
+    bool PressedThisFrame(WORD key);
 };
 
 extern Gamepad gamepad;

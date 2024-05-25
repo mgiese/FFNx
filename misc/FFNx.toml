@@ -489,10 +489,16 @@ override_path = "override"
 # This flag is empty by default to ensure performance is not dropped.
 override_mod_path = ""
 
+#[CHEATBULLSHIT]
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~
+waitinput_frames = 15
+
 #[SPEEDHACK]
 # Set the step when increasing the speedhack speed
 #~~~~~~~~~~~~~~~~~~~~~~~~~~
 speedhack_step = 0.5
+hacks_controller_quick_toggle = true
 
 # Set the limit of the speedhack multiplier
 #~~~~~~~~~~~~~~~~~~~~~~~~~~
