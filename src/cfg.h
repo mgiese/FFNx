@@ -132,6 +132,7 @@ extern long devtools_hotkey;
 extern double speedhack_step;
 extern double speedhack_max;
 extern double speedhack_min;
+extern double speedhack_start;
 extern double waitinput_frames;
 extern bool hacks_controller_quick_toggle;
 extern bool enable_animated_textures;

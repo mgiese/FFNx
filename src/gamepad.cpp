@@ -132,7 +132,18 @@ bool Gamepad::Refresh()
 }
 
 bool Gamepad::PressedThisFrame(WORD key) {
-    return !previousFrameKeys[key] && gamepad.IsPressed(key);
+//    return true;
+    auto it = isPressedThisFrame.find(key);
+
+    if (it != isPressedThisFrame.end()) {
+        // Key exists
+        return it->second;
+        // Do something with the value
+    }
+    else
+    {
+        return false;
+    }
 }
 
 void Gamepad::setKeyState(WORD key) {

@@ -1,0 +1,1 @@
+cp "D:\git\FFNx\.build\bin\FFNx.dll" "E:\SteamLibrary\steamapps\common\FINAL FANTASY VII\FFNx.dll"

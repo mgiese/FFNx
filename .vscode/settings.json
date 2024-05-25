@@ -1,5 +1,15 @@
 {
     "files.associations": {
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "algorithm": "cpp",
+        "chrono": "cpp",
+        "functional": "cpp",
+        "optional": "cpp",
+        "regex": "cpp",
+        "system_error": "cpp",
+        "type_traits": "cpp",
+        "xlocmon": "cpp",
+        "xtr1common": "cpp",
+        "xutility": "cpp"
     }
 }

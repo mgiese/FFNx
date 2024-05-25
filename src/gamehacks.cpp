@@ -40,7 +40,10 @@ void GameHacks::toggleSpeedhack()
 
 void GameHacks::resetSpeedhack()
 {
-	speedhack_current_speed = speedhack_min;
+	speedhack_current_speed = speedhack_start;
+	// nah dog.
+
+	speedhack_enabled = false;
 }
 
 void GameHacks::increaseSpeedhack()
@@ -145,7 +148,7 @@ void GameHacks::init()
 {
 	resetSpeedhack();
 
-	if (speedhack_current_speed > 1.0) speedhack_enabled = true;
+	//if (speedhack_current_speed > 1.0) speedhack_enabled = true;
 }
 
 void GameHacks::processKeyboardInput(UINT msg, WPARAM wParam, LPARAM lParam)
@@ -213,7 +216,7 @@ void GameHacks::processGamepadInput()
 				return;
 			}
 
-			if (hacks_controller_quick_toggle && gamepad.IsPressed(XINPUT_GAMEPAD_LEFT_THUMB)) // L2
+			if (!hacks_controller_quick_toggle && gamepad.IsPressed(XINPUT_GAMEPAD_LEFT_THUMB)) // L2
 			{
 				isGamepadShortcutMode = !isGamepadShortcutMode;
 				if(isGamepadShortcutMode) show_popup_msg(TEXTCOLOR_LIGHT_BLUE, "Waiting for shortcut input..");
@@ -222,8 +225,38 @@ void GameHacks::processGamepadInput()
 			}
 			else
 			{
-				// bullshit hacks to make it be a hotkey combo instead the weird waiting you have to do. you know, like how the keyboard shortcuts work
-				if (gamepad.PressedThisFrame(XINPUT_GAMEPAD_RIGHT_THUMB)){
+
+
+				if (gamepad.IsPressed(XINPUT_GAMEPAD_LEFT_THUMB))
+				{
+					if (gamepad.PressedThisFrame(XINPUT_GAMEPAD_RIGHT_THUMB))
+					{
+						toggleBattleMode();					
+					}
+					else if (gamepad.PressedThisFrame(XINPUT_GAMEPAD_RIGHT_SHOULDER))
+					{
+						increaseSpeedhack();
+					}
+					// Decrease in-game speed on L1
+					else if (gamepad.PressedThisFrame(XINPUT_GAMEPAD_LEFT_SHOULDER))
+					{
+						decreaseSpeedhack();
+					}
+					else if (gamepad.PressedThisFrame(XINPUT_GAMEPAD_B))
+					{
+						toggleAutoAttackMode();
+					}
+					else if (gamepad.PressedThisFrame(XINPUT_GAMEPAD_X))
+					{
+						skipMovies();
+					}
+					else if (gamepad.IsPressed(XINPUT_GAMEPAD_BACK) && gamepad.IsPressed(XINPUT_GAMEPAD_START))
+					{				
+						softReset();
+					}
+				}
+				else if (gamepad.PressedThisFrame(XINPUT_GAMEPAD_RIGHT_THUMB))
+				{
 					toggleSpeedhack();
 				}
 				return;

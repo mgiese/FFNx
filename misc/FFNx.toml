@@ -492,7 +492,7 @@ override_mod_path = ""
 #[CHEATBULLSHIT]
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~
-waitinput_frames = 15
+waitinput_frames = 0.0
 
 #[SPEEDHACK]
 # Set the step when increasing the speedhack speed
@@ -504,6 +504,7 @@ hacks_controller_quick_toggle = true
 #~~~~~~~~~~~~~~~~~~~~~~~~~~
 speedhack_max = 8.0
 speedhack_min = 1.0
+speedhack_start = 1.0
 
 #[EXPERIMENTAL]
 # Enable support for animated textures.
