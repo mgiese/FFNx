@@ -535,7 +535,7 @@ devtools_hotkey = 0x7B
 
 # Display the verion of FFNx in upper right corner ( when fullscreen ) or in the title bar ( when windowed )
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-show_version = true
+show_version = false
 
 # Display frames per second counter in upper right corner ( when fullscreen ) or in the title bar ( when windowed )
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -543,7 +543,7 @@ show_fps = false
 
 # Display Rendering backend in upper right corner ( when fullscreen ) or in the title bar ( when windowed )
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-show_renderer_backend = true
+show_renderer_backend = false
 
 # Display some real-time debug information
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -219,7 +219,7 @@ void GameHacks::processGamepadInput()
 			if (!hacks_controller_quick_toggle && gamepad.IsPressed(XINPUT_GAMEPAD_LEFT_THUMB)) // L2
 			{
 				isGamepadShortcutMode = !isGamepadShortcutMode;
-				if(isGamepadShortcutMode) show_popup_msg(TEXTCOLOR_LIGHT_BLUE, "Waiting for shortcut input..");
+				if(isGamepadShortcutMode) show_popup_msg(TEXTCOLOR_LIGHT_BLUE, "Waiting for shortcut input (gp)..");
 				else clear_popup_msg();
 				holdInput();
 			}
@@ -322,7 +322,7 @@ void GameHacks::processGamepadInput()
 			if (joystick.GetState()->rgbButtons[10] & 0x80) // L2
 			{
 				isGamepadShortcutMode = !isGamepadShortcutMode;
-				if(isGamepadShortcutMode) show_popup_msg(TEXTCOLOR_LIGHT_BLUE, "Waiting for shortcut input..");
+				if(isGamepadShortcutMode) show_popup_msg(TEXTCOLOR_LIGHT_BLUE, "Waiting for shortcut input (js)..");
 				else clear_popup_msg();
 				holdInput();
 			}

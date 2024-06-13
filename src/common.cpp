@@ -1065,6 +1065,23 @@ void common_flip(struct game_obj *game_object)
 		static uint32_t col = 4;
 		uint32_t row = 1;
 
+		if (!gamehacks.wantsBattle())
+		{
+			gl_draw_text(col, row++, text_colors[TEXTCOLOR_YELLOW], 255, "BATTLES DISABLED");
+		}
+
+		if (gamehacks.isAutoAttack())
+		{
+			gl_draw_text(col, row++, text_colors[TEXTCOLOR_YELLOW], 255, "AUTOBATTLE ENABLED");
+		}
+
+		auto gameSpeed = gamehacks.getCurrentSpeedhack();
+		if (gameSpeed > 1.0f) 
+		{
+			// Using C-style format string
+			gl_draw_text(col, row++, text_colors[TEXTCOLOR_GREEN], 255, "Gamespeed: %s", std::to_string(gameSpeed).c_str());
+		}
+
 		if (show_version)
 		{
 			gl_draw_text(col, row++, text_colors[TEXTCOLOR_GRAY], 255, "Version: " VERSION);
@@ -1101,6 +1118,7 @@ void common_flip(struct game_obj *game_object)
 			gl_draw_text(col, row++, color, 255, "Vertices: %u", stats.vertex_count);
 			gl_draw_text(col, row++, color, 255, "Timer: %I64u", stats.timer);
 		}
+		
 	}
 	else
 	{
