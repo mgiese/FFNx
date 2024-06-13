@@ -22,7 +22,7 @@ renderer_backend = 0
 #[FULLSCREEN]
 # If off, it will run in window mode.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-fullscreen = true
+fullscreen = false
 
 #[BORDERLESS]
 # If off, it will run using the default window style.
@@ -78,7 +78,7 @@ refresh_rate = 0
 # - 16: 16x
 # If you set any value that is different than those, it will pick the higher option ( eg. if you pick 6 it will be 8, if you pick 1 it will be 2, and so on ).
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-enable_antialiasing = 0
+enable_antialiasing = 4
 
 #[ANISOTROPIC]
 # Enable anisotropic filtering, for high-res textures and overall rendering
@@ -247,7 +247,7 @@ external_music_sync = false
 # - FF7 eStore: data/music_ogg
 # - FF7 Steam: data/music_ogg
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-external_music_path = "music/vgmstream"
+external_music_path = "music/sync"
 
 #[EXTERNAL MUSIC EXTENSION]
 # The type of file to search for. By default is ogg.
@@ -257,7 +257,7 @@ external_music_path = "music/vgmstream"
 # - https://github.com/losnoco/vgmstream#supported-file-types
 # - psf, psf2, minipsf, minipsf2 (PSF and PSF2) if you provide the Highly Experimental BIOS
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-external_music_ext = "ogg"
+external_music_ext = "minipsf"
 
 #[EXTERNAL MUSIC HIGHLY EXPERIMENTAL BIOS]
 # This flag will enable support to PSF and PSF2 formats.
