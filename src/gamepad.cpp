@@ -20,6 +20,7 @@
 /****************************************************************************/
 
 #include "gamepad.h"
+#include "globals.h"
 #include <unordered_map>
 Gamepad gamepad;
 
@@ -81,6 +82,7 @@ bool Gamepad::CheckConnection()
 // Returns false if the controller has been disconnected
 bool Gamepad::Refresh()
 {
+    
     if (cId == -1)
         CheckConnection();
 
@@ -114,17 +116,23 @@ bool Gamepad::Refresh()
         leftTrigger = (float)state.Gamepad.bLeftTrigger / 255;
         rightTrigger = (float)state.Gamepad.bRightTrigger / 255;
 
-        setKeyState(XINPUT_GAMEPAD_X);
-        setKeyState(XINPUT_GAMEPAD_A);
-        setKeyState(XINPUT_GAMEPAD_B);
-        setKeyState(XINPUT_GAMEPAD_Y);
-        setKeyState(XINPUT_GAMEPAD_LEFT_SHOULDER);
-        setKeyState(XINPUT_GAMEPAD_RIGHT_SHOULDER);
+        if (current_frame != frame_counter)
+        {
 
-        setKeyState(XINPUT_GAMEPAD_BACK);
-        setKeyState(XINPUT_GAMEPAD_START);
-        setKeyState(XINPUT_GAMEPAD_LEFT_THUMB);
-        setKeyState(XINPUT_GAMEPAD_RIGHT_THUMB);
+            setKeyState(XINPUT_GAMEPAD_X);
+            setKeyState(XINPUT_GAMEPAD_A);
+            setKeyState(XINPUT_GAMEPAD_B);
+            setKeyState(XINPUT_GAMEPAD_Y);
+            setKeyState(XINPUT_GAMEPAD_LEFT_SHOULDER);
+            setKeyState(XINPUT_GAMEPAD_RIGHT_SHOULDER);
+
+            setKeyState(XINPUT_GAMEPAD_BACK);
+            setKeyState(XINPUT_GAMEPAD_START);
+            setKeyState(XINPUT_GAMEPAD_LEFT_THUMB);
+            setKeyState(XINPUT_GAMEPAD_RIGHT_THUMB);
+        }
+
+        current_frame = frame_counter;
 
         return true;
     }
@@ -133,34 +141,29 @@ bool Gamepad::Refresh()
 
 bool Gamepad::PressedThisFrame(WORD key) {
 //    return true;
-    auto it = isPressedThisFrame.find(key);
+    auto it = pressed_this_frame.find(key);
 
-    if (it != isPressedThisFrame.end()) {
+    if (it != pressed_this_frame.end()) {
         // Key exists
-        return it->second;
-        // Do something with the value
+        bool val = it->second;
+
+        // pressed this frame, but not last frame
+        return val && !pressed_last_frame[key];
     }
     else
     {
+        // no key - not initialized
         return false;
     }
 }
 
-void Gamepad::setKeyState(WORD key) {
+void Gamepad::setKeyState(WORD key) {    
 
     bool isPressed = gamepad.IsPressed(key);
 
-    auto it = previousFrameKeys.find(key);
-
-    if (it != previousFrameKeys.end()) {
-        // Key exists
-        bool value = it->second;
-        isPressedThisFrame[key] = !value && isPressed;
-        // Do something with the value
-    }
-
-    previousFrameKeys[key] = gamepad.IsPressed(key);  // You can set any index (key) with this syntax
-}
+    pressed_last_frame[key] = pressed_this_frame[key];
+    pressed_this_frame[key] = isPressed;
+  }
 
 bool Gamepad::IsPressed(WORD button) const
 {    

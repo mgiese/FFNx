@@ -22,7 +22,7 @@
 #pragma once
 
 #include "log.h"
-
+#include "common.h"
 class GameHacks
 {
 private:

@@ -26,6 +26,8 @@
 #include <Xinput.h>
 #include <unordered_map>
 
+#include "common.h"
+
 // Kudos to https://katyscode.wordpress.com/2013/08/30/xinput-tutorial-part-1-adding-gamepad-support-to-your-windows-game/
 class Gamepad
 {
@@ -34,8 +36,9 @@ private:
     int test;
     XINPUT_STATE state;
     XINPUT_VIBRATION vibration;
-    std::unordered_map<WORD, bool> previousFrameKeys;
-    std::unordered_map<WORD, bool> isPressedThisFrame;
+    uint32_t current_frame;
+    std::unordered_map<WORD, bool> pressed_last_frame;
+    std::unordered_map<WORD, bool> pressed_this_frame;
     float deadzoneX;
     float deadzoneY;
 
