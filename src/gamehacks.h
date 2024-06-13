@@ -67,6 +67,7 @@ public:
 
 	// SPEEDHACK
 	double getCurrentSpeedhack();
+	bool isSpeedHack();
 
 	// BATTLE
 	bool wantsBattle();

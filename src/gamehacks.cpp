@@ -370,6 +370,11 @@ void GameHacks::processGamepadInput()
 	}
 }
 
+bool GameHacks::isSpeedHack()
+{
+	return speedhack_enabled;
+}
+
 double GameHacks::getCurrentSpeedhack()
 {
 	return speedhack_enabled ? speedhack_current_speed : 1.0;

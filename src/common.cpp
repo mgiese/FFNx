@@ -1075,11 +1075,12 @@ void common_flip(struct game_obj *game_object)
 			gl_draw_text(col, row++, text_colors[TEXTCOLOR_YELLOW], 255, "AUTOBATTLE ENABLED");
 		}
 
-		auto gameSpeed = gamehacks.getCurrentSpeedhack();
-		if (gameSpeed > 1.0f) 
+		if (gamehacks.isSpeedHack()) 
 		{
 			// Using C-style format string
-			gl_draw_text(col, row++, text_colors[TEXTCOLOR_GREEN], 255, "Gamespeed: %s", std::to_string(gameSpeed).c_str());
+			char buffer[20];
+			snprintf(buffer, sizeof(buffer), "%.1f", gamehacks.getCurrentSpeedhack());
+			gl_draw_text(col, row++, text_colors[TEXTCOLOR_GREEN], 255, "Gamespeed: %sx", buffer);
 		}
 
 		if (show_version)

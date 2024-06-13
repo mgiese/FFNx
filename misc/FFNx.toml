@@ -22,7 +22,7 @@ renderer_backend = 0
 #[FULLSCREEN]
 # If off, it will run in window mode.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-fullscreen = false
+fullscreen = true
 
 #[BORDERLESS]
 # If off, it will run using the default window style.
@@ -56,7 +56,7 @@ internal_resolution_scale = 0
 # 2: New 16:9 aspect ratio mode without stretching the image. Fields that lack horizontal scrolling will show black bars on the left and right side.
 # 3: New 16:10 aspect ratio which crops the left and right edges of the image so that it can stretch to fill a 16:10 screen.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-aspect_ratio = 0
+aspect_ratio = 2
 
 #[ENABLE VSYNC]
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -94,7 +94,7 @@ enable_bilinear = false
 # Enable advanced lighting mode with real-time shadows.
 # NOTICE: Parameters such as light direction and color can be edited on the lighting debug window in the FFNx DevTools.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-enable_lighting = false
+enable_lighting = true
 
 #[PREFER LIGHTING CPU CALCULATIONS]
 # Prefer lighting CPU calculations.
@@ -131,7 +131,7 @@ external_time_cycle_path = "time"
 #[EXTERNAL WORLDMAP MESH]
 # Enable worldmap external meshes.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-enable_worldmap_external_mesh = false
+enable_worldmap_external_mesh = true
 
 #[EXTERNAL MESH PATH]
 # Path for external mesh files.
@@ -217,7 +217,7 @@ external_sfx_always_centered = false
 # This flag will enable/disable the support of an enhanced audio layer to reproduce music in-game.
 # If you leave out the default configuration FFNx will autodetect your environment and will set it to the best available option.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-use_external_music = false
+use_external_music = true
 
 #[EXTERNAL MUSIC VOLUME]
 # This setting will allow you to configure the volume of the Music layer.
@@ -247,7 +247,7 @@ external_music_sync = false
 # - FF7 eStore: data/music_ogg
 # - FF7 Steam: data/music_ogg
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-external_music_path = ""
+external_music_path = "music/vgmstream"
 
 #[EXTERNAL MUSIC EXTENSION]
 # The type of file to search for. By default is ogg.
@@ -265,7 +265,7 @@ external_music_ext = "ogg"
 # To find one compiled BIOS: https://git.lopez-snowhill.net/chris/foo_psf
 # To generate one: https://git.lopez-snowhill.net/chris/highly_experimental
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-he_bios_path = ""
+he_bios_path = "music/hebios.bin"
 
 #[EXTERNAL VOICE PATH]
 # Path of the external voice files
@@ -372,7 +372,7 @@ external_movie_audio_ext = "ogg"
 #[ANALOGUE CONTROLS]
 # FF7: This flag will enable analogue joystick input for controlling the player in fields and the camera in battles.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-enable_analogue_controls = false
+enable_analogue_controls = true
 
 #[INVERT VERTICAL CAMERA CONTROLS]
 # FF7: This flag will enable inverted camera vertical movement when controlling the camera in battles.
@@ -407,7 +407,7 @@ right_analog_trigger_deadzone = 0.1
 #[AUTO RUN]
 # FF7: This flag enables mode to walk or run depending on how much the left analog stick is tilt.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-enable_auto_run = false
+enable_auto_run = true
 
 #[EXTERNAL VIBRATE PATH]
 # Path of the external vibrate files
@@ -433,7 +433,7 @@ steam_game_userdata = ""
 # connected to the Internet to unlock achievement).
 # Note: incompatible with mods that change dramatically the gameplay (for example, New Threat mod), use it at your own risk
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-enable_steam_achievements = false
+enable_steam_achievements = true
 
 ########################
 ## MODDER OPTIONS
@@ -442,7 +442,7 @@ enable_steam_achievements = false
 #[TEXTURE PATH]
 # Mod directory where textures will be loaded from
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-mod_path = "mods/Textures"
+mod_path = "mods/textures"
 
 # Mod extension
 # You can change the extension list, ordered by priority. DO NOT add new extensions, driver will become unstable.
@@ -503,19 +503,19 @@ hacks_controller_quick_toggle = true
 # Set the limit of the speedhack multiplier
 #~~~~~~~~~~~~~~~~~~~~~~~~~~
 speedhack_max = 8.0
-speedhack_min = 1.0
-speedhack_start = 1.0
+speedhack_min = 0.5
+speedhack_start = 3.0
 
 #[EXPERIMENTAL]
 # Enable support for animated textures.
 # WARNING: This flag MAY degrade the gameplay performance. Enable at your own risk.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~
-enable_animated_textures = false
+enable_animated_textures = true
 
 # Disable animated textures on the fields listed below.
 # This field can be a single field name, or an array of field names.
 # NOTE: This is an actual BLACKLIST and it will have an impact ONLY when 'enable_animated_textures = true'
-disable_animated_textures_on_field = ""
+disable_animated_textures_on_field = ["ancnt2", "ancnt3", "ancnt4", "bugin3", "crater_2", "crcin_1", "las0_8", "las2_1", "las2_2", "las2_3", "trnad_4", "whitein"]
 
 ##########################
 # DEBUGGING OPTIONS
@@ -669,7 +669,7 @@ uniform_log = false
 # - 2: 30 FPS ( it will bump Battle mode to 30 FPS, everything else will run in vanilla mode )
 # - 3: 60 FPS ( all the game will run in 60 FPS, use this option at your own risk )
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ff7_fps_limiter = 1
+ff7_fps_limiter = 3
 
 # Allow the sfx footstep sound to be played everytime you move in fields
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~
